@@ -4,17 +4,29 @@ import org.example.dto.BookDTO;
 import org.example.entity.Book;
 
 public class BookMapper {
-    public static BookDTO toDTO(Book book) {
-        if (book == null) {
-            return null;
-        }
-        return new BookDTO(book.getIsbn(), book.getTitle(), book.getAuthor(), book.getStatus());
-    }
-
+    // Convertir BookDTO en Book
     public static Book toEntity(BookDTO bookDTO) {
         if (bookDTO == null) {
             return null;
         }
-        return new Book(bookDTO.getIsbn(), bookDTO.getTitle(), bookDTO.getAuthor(), bookDTO.getStatus());
+        Book book = new Book();
+        book.setIsbn(bookDTO.getIsbn());
+        book.setTitle(bookDTO.getTitle());
+        book.setAuthor(bookDTO.getAuthor());
+        book.setStatus(bookDTO.getStatus());
+        return book;
+    }
+
+    // Convertir Book en BookDTO
+    public static BookDTO toDTO(Book book) {
+        if (book == null) {
+            return null;
+        }
+        BookDTO bookDTO = new BookDTO();
+        bookDTO.setIsbn(book.getIsbn());
+        bookDTO.setTitle(book.getTitle());
+        bookDTO.setAuthor(book.getAuthor());
+        bookDTO.setStatus(book.getStatus());
+        return bookDTO;
     }
 }
